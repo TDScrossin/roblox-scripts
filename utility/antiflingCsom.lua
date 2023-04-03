@@ -113,6 +113,8 @@ Services.RunService.Heartbeat:Connect(function()
 
 
 -- // CASSETTE PLAYER REMOVAL \\ --
+
+local function removeCassette()
 for i,v in ipairs(Services.Players:GetPlayers()) do
     if v ~= LocalPlayer then
         if v.Character then
@@ -128,6 +130,12 @@ for i,v in ipairs(Services.Players:GetPlayers()) do
         end
     end
 end
+   end
+
+while task.wait(.5) do
+   removeCassette()
+end
+
 
 
 -- // Event Listeners \\ --
