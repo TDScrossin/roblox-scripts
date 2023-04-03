@@ -145,3 +145,9 @@ for i,v in ipairs(Services.Players:GetPlayers()) do
    end
 end
 
+
+
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+                  Text = "Anti fling script initialized. Your fling protection is OFF.";
+                  Color = Color3.fromRGB(255, 0, 0);
+                  })
