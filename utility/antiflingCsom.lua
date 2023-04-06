@@ -8,7 +8,7 @@ end
 return NewService
 end})
 
-wait(5)
+wait(3)
 -- [ LocalPlayer ] --
 local LocalPlayer = Services.Players.LocalPlayer
 local canFling = false
@@ -112,6 +112,18 @@ Services.RunService.Heartbeat:Connect(function()
     end)
 
 
+LocalPlayer.CharacterAdded:Connect(function(char)
+    if char:WaitForChild("Humanoid") then
+        char.Humanoid.StateChanged:Connect(function(_oldState, newState)
+            if newState == Enum.HumanoidStateType.Ragdoll or newState == Enum.HumanoidStateType.FallingDown then
+                if canFling == false then
+                    char.Humanoid:ChangeState(10)
+                end
+            end
+        end)
+    end
+end)
+
 -- // CASSETTE PLAYER REMOVAL \\ --
 
 local function removeCassette()
@@ -137,6 +149,10 @@ while task.wait(.5) do
 end
 
 
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+                  Text = "Anti fling script initialized. Your fling protection is OFF.";
+                  Color = Color3.fromRGB(255, 0, 0);
+                  })
 
 -- // Event Listeners \\ --
 for i,v in ipairs(Services.Players:GetPlayers()) do
@@ -147,7 +163,3 @@ end
 
 
 
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-                  Text = "Anti fling script initialized. Your fling protection is OFF.";
-                  Color = Color3.fromRGB(255, 0, 0);
-                  })
