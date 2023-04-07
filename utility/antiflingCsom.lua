@@ -14,6 +14,8 @@ local LocalPlayer = Services.Players.LocalPlayer
 local canFling = false
 local mouse = LocalPlayer:GetMouse()
 
+
+
 -- // Functions \\ --
 local function PlayerAdded(Player)
    local Detected = false
@@ -58,8 +60,20 @@ local function PlayerAdded(Player)
    end)
 end
 
+local ui = Instance.new("ScreenGui")
+ui.Parent = game.CoreGui
+local text = Instance.new("TextLabel")
+text.Position = UDim2.new(0.914, 0, 0.902, 0)
+text.Size = UDim2.new(0.086, 0, 0.04, 0)
+text.BackgroundTransparency = 1
+text.TextColor3 = Color3.fromRGB(0, 170, 0)
+text.Font = "Roboto Condensed"
+text.TextStrokeTransparency = 0.5
+text.Text = "ANTIFLING"
+text.TextScaled = true
+text.Parent = ui
+
 Services.Players.PlayerAdded:Connect(PlayerAdded)
-print("Hi")
 mouse.KeyDown:Connect(function(key)
     if key == "f" then
         if canFling == false then
@@ -68,12 +82,14 @@ mouse.KeyDown:Connect(function(key)
                Text = "You have disabled your fling protection.";
                Color = Color3.fromRGB(255, 0, 0);
            })
+            text.Visible = false
        else
            canFling = false
             game.StarterGui:SetCore("ChatMakeSystemMessage", {
                Text = "You have enabled your fling protection.";
                Color = Color3.fromRGB(0, 200, 0);
            })
+            teext.Visible = true
         end
     end
 end)
@@ -124,6 +140,11 @@ LocalPlayer.CharacterAdded:Connect(function(char)
     end
 end)
 
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+  Text = "Anti fling script initialized. Your fling protection is OFF.";
+  Color = Color3.fromRGB(255, 0, 0);
+})
+
 -- // CASSETTE PLAYER REMOVAL \\ --
 
 local function removeCassette()
@@ -148,11 +169,6 @@ while task.wait(.5) do
    removeCassette()
 end
 
-
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-                  Text = "Anti fling script initialized. Your fling protection is OFF.";
-                  Color = Color3.fromRGB(255, 0, 0);
-                  })
 
 -- // Event Listeners \\ --
 for i,v in ipairs(Services.Players:GetPlayers()) do
