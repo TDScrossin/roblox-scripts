@@ -141,8 +141,8 @@ LocalPlayer.CharacterAdded:Connect(function(char)
 end)
 
 game.StarterGui:SetCore("ChatMakeSystemMessage", {
-  Text = "Anti fling script initialized. Your fling protection is OFF.";
-  Color = Color3.fromRGB(255, 0, 0);
+  Text = "Anti fling script initialized. Your fling protection is ON.";
+  Color = Color3.fromRGB(0, 170, 0);
 })
 
 -- // CASSETTE PLAYER REMOVAL \\ --
