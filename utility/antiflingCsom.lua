@@ -89,7 +89,7 @@ mouse.KeyDown:Connect(function(key)
                Text = "You have enabled your fling protection.";
                Color = Color3.fromRGB(0, 200, 0);
            })
-            teext.Visible = true
+            text.Visible = true
         end
     end
 end)
