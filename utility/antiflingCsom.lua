@@ -39,7 +39,7 @@ local function PlayerAdded(Player)
                if Detected == false then
                    game.StarterGui:SetCore("ChatMakeSystemMessage", {
                        Text = "[Warn] A fling exploit was detected from: " .. tostring(Player).. ". This could be a false positive.";
-                       Color = Color3.fromRGB(255, 200, 0);
+                       Color = Color3.fromRGB(255, 0, 0);
                    })
                end
                Detected = true
